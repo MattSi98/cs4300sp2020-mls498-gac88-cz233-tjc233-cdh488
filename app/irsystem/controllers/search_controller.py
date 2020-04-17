@@ -79,12 +79,14 @@ Takes twenty random entries from the given list of valid questions
 
 
 def getTwentyRandQuestions(validQuestions):
-    finalQuestions = []
-    for i in range(20):
-        randNum = random.randrange(0, len(validQuestions))
-        finalQuestions.append(validQuestions[randNum])
-    print(finalQuestions)
-    return finalQuestions
+	if (validQuestions == []):
+  	    return ["invlaid input - try again."]
+	else:
+		finalQuestions = []	
+		for i in range(20):
+			randNum = random.randrange(0, len(validQuestions))
+			finalQuestions.append(validQuestions[randNum])
+		return finalQuestions
 
 
 '''
