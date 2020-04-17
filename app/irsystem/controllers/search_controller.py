@@ -2,6 +2,12 @@ from . import *
 from app.irsystem.models.helpers import *
 from app.irsystem.models.helpers import NumpyEncoder as NumpyEncoder
 
+
+###### my imports
+import json
+import numpy as np
+import random
+
 project_name = "Spotify Buddy Playlist Generation"
 net_id = "Matthew Simon: mls498, Grayson Campbell: gac88, Daniel Hayon: dh488, Theo Carrel: tjc233, Carol Zhang: cz233"
 
@@ -58,7 +64,7 @@ example:
 def getValidQuestions(query):
     validQuestions = []
     queryWords = splitQuery(query)
-    with open('questionsList.json') as file:
+    with open('./data/questionsList.json') as file:
         data = json.load(file)
         for word in queryWords:
             for x in data:
