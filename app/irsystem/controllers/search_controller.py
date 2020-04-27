@@ -8,6 +8,21 @@ import json
 import numpy as np
 import random
 
+
+
+###########  this is the trending US topics for the day #####################################
+import pandas as pd
+from pytrends.request import TrendReq
+pytrend = TrendReq()
+
+# Get Google Hot Trends data
+df = pytrend.trending_searches(pn='united_states')
+trending = []
+for x in df.values:
+    trending.append(x[0])
+
+
+
 project_name = "Spotify Buddy Playlist Generation"
 net_id = "Matthew Simon: mls498, Grayson Campbell: gac88, Daniel Hayon: dh488, Theo Carrel: tjc233, Carol Zhang: cz233"
 
@@ -15,7 +30,7 @@ net_id = "Matthew Simon: mls498, Grayson Campbell: gac88, Daniel Hayon: dh488, T
 def search():
 	query = request.args.get('search')
 	if not query:
-		data = []
+		data = trending
 		output_message = ''
 	else:
 		output_message = "Your search: " + query
