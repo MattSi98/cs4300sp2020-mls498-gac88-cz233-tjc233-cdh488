@@ -28,13 +28,13 @@ net_id = "Matthew Simon: mls498, Grayson Campbell: gac88, Daniel Hayon: dh488, T
 def search():
 	query = request.args.get('search')
 	if not query:
-		data = trending
+		data = []
 		output_message = ''
 	else:
 		output_message = "Here are questions about " + query + "!"
 		#data = range(5)
 		data = generateQuiz(query)
-	return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=data)
+	return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=data, trending=trending)
 
 
 
@@ -180,5 +180,5 @@ generates a full quiz of 20 questions from a given input query
 
 def generateQuiz(query):
     valid = getValidQuestions(query)
-    #return getTwentyRandQuestions(valid)
-    return getMostSimilar(valid)
+    return getTwentyRandQuestions(valid)
+    #return getMostSimilar(valid)
