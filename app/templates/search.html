@@ -44,7 +44,15 @@
         <h1 class="yellow-text" style="text-align: center;">{{output_message}}</h1>
         {% for d in data %}
         <br>
-        <p class="yellow-text">{{d}}</p>
+        <div class="question-container">
+            <div class="answer">
+                <p class="content-text">{{d[0]}}</p>
+            </div>
+            <div class="question">
+                <p class="content-text">{{d[1]}}</p>
+            </div>
+        </div>
+        <!-- <p class="yellow-text">{{d[0]}}</p> -->
         {% endfor %}
         {% endif %}
     </div>
