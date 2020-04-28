@@ -18,7 +18,7 @@ def search():
 		data = []
 		output_message = ''
 	else:
-		output_message = "Your search: " + query
+		output_message = "Here are questions about " + query + "!"
 		#data = range(5)
 		data = generateQuiz(query)
 	return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=data)

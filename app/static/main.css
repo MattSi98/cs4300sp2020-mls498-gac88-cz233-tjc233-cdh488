@@ -9,8 +9,9 @@ padding: 20px 0;
 text-align:center;
 }
 body {
-padding-top: 15%;
+padding-top: 5%;
 padding-bottom: 15px;
+background-color: #060CE9;
 }
 .global-search {
 text-align:center;
@@ -35,4 +36,45 @@ border: none
 }
 .step-links a{
 color: #4285F4;
+}
+#footer{
+    /* display: table; */
+    /* position: absolute; */
+    /* bottom: 0; */
+    width: 100%;
+}
+.yellow-text {
+    color: #FFCC00
+}
+#logo {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+.description{
+    margin-top: 30px;
+    width: 50%;
+}
+.description p {
+    color: #FFCC00;
+    text-align: center;
+    font-size: 16px;
+}
+#questions-container {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.question-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border: 1px solid #FFCC00;
+    height: 100px;
+    background-color: navy;
+}
+.content-container {
+    height: 50%
 }

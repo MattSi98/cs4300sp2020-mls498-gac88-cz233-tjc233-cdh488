@@ -1,4 +1,4 @@
-<html>
+<html background-color:"#060CE9">
 
 <head>
     <link rel="stylesheet" href="/static/bootstrap.min.css">
@@ -6,10 +6,6 @@
 </head>
 
 <body>
-    <div class="topcorner">
-        <p>Project Name: {{ name }}</p>
-        <p>Student Name: ({{ netid }})</p>
-    </div>
     <form class="form-inline global-search">
         <!-- <h1 style="font-size: 55px; font-family:Futura; color: #4285F4">
             C
@@ -19,19 +15,22 @@
             <span style="color: #34A853; ">0</span>
             <span style="color: #EA4335; ">0</span>
         </h1> -->
-        <h1 style="font-size: 55px; font-family: Futura; color: rgb(0, 4, 240);">
+        <!-- <h1 style="font-size: 55px; font-family: Futura; color: rgb(0, 4, 240);">
             Custom Jeopardy
-        </h1>
-
+        </h1> -->
+        <img id="logo" src="/static/jeopardy-logo.png">
+        <div class="description">
+            <p>Welcome to your very own personalized Jeopardy game! Have you ever wanted to test your knowledge on a certain category of questions? This is your oppurtunity! Simply type in a keyword in the search bar below and we'll make you a game based on similar questions.</p>
+        </div>
         <br><br>
 
-        <div class="form-group">
+        <div class="active-pink-4 mb-4">
             <input id="input" type="text" name="search" class="form-control"
-                placeholder="What type of quiz do you want?">
+                placeholder="What do you want to be tested on?">
         </div>
         <button type="submit" class="btn btn-info"> Go! </button>
     </form>
-    <form class="form-inline global-search">
+    <!-- <form class="form-inline global-search">
         {% if data %}
         <h1>{{output_message}}</h1>
         {% for d in data %}
@@ -39,7 +38,20 @@
         <p>{{d}}</p>
         {% endfor %}
         {% endif %}
-    </form>
+    </form> -->
+    <div id="questions-container">
+        {% if data %}
+        <h1 class="yellow-text" style="text-align: center;">{{output_message}}</h1>
+        {% for d in data %}
+        <br>
+        <p class="yellow-text">{{d}}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div id="footer">
+        <p class="yellow-text" style="text-align: center;">Project Name: {{ name }}</p>
+        <p class="yellow-text" style="text-align: center;">Student Name: ({{ netid }})</p>
+    </div>
 </body>
 
 </html>
