@@ -11,6 +11,9 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize 
 
 
+
+
+
 import pandas as pd
 from pytrends.request import TrendReq
 pytrend = TrendReq()
@@ -180,5 +183,5 @@ generates a full quiz of 20 questions from a given input query
 
 def generateQuiz(query):
     valid = getValidQuestions(query)
-    return getTwentyRandQuestions(valid)
-    #return getMostSimilar(valid)
+    #return getTwentyRandQuestions(valid)
+    return getMostSimilar(valid)
