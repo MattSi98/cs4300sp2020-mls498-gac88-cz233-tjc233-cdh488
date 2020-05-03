@@ -1,4 +1,4 @@
-from . import *  
+from . import *
 from app.irsystem.models.helpers import *
 from app.irsystem.models.helpers import NumpyEncoder as NumpyEncoder
 
@@ -7,8 +7,8 @@ from app.irsystem.models.helpers import NumpyEncoder as NumpyEncoder
 import json
 import numpy as np
 import random
-from nltk.corpus import stopwords 
-from nltk.tokenize import word_tokenize 
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
 
 
 
@@ -64,7 +64,7 @@ def splitQuery(query):
 
 
 '''
-Takes query input of a query and returns a list of all of the questions 
+Takes query input of a query and returns a list of all of the questions
 within those categories as long as they were valid categories.
 Invalid categories are ignored.
 
@@ -85,7 +85,7 @@ def getValidQuestions(query):
         for word in queryWords:
             for x in data:
                 if (word.upper() in x[0]):
-                    validQuestions.append((x[1], x[2]))
+                    validQuestions.append((x[1], x[2], x[0]))
     return validQuestions
 
 
@@ -98,7 +98,7 @@ def getTwentyRandQuestions(validQuestions):
 	if (validQuestions == []):
   	    return ["invlaid input - try again."]
 	else:
-		finalQuestions = []	
+		finalQuestions = []
 		for i in range(20):
 			randNum = random.randrange(0, len(validQuestions))
 			finalQuestions.append(validQuestions[randNum])
@@ -126,11 +126,11 @@ def cosineSim(sentence1, sentence2):
             tmp2.append(0)
 
     c = 0
-  
-    # cosine formula  
-    for i in range(len(union)): 
-            c+= tmp1[i]*tmp2[i] 
-    cosine = c / float((sum(tmp1)*sum(tmp2))**0.5) 
+
+    # cosine formula
+    for i in range(len(union)):
+            c+= tmp1[i]*tmp2[i]
+    cosine = c / float((sum(tmp1)*sum(tmp2))**0.5)
     return cosine
 
 
@@ -162,18 +162,18 @@ def getMostSimilar(validQuestions):
     final = []
     for x in ordered_list[:20]:
         final.append((validQuestions[x[1]], x[0]))
-    return final 
-   
-
-        
+    return final
 
 
 
 
-        
 
 
-    
+
+
+
+
+
 
 
 '''

@@ -4,7 +4,71 @@
     <link rel="stylesheet" href="/static/bootstrap.min.css">
     <link rel="stylesheet" href="/static/main.css">
 </head>
+<style>
+    #questions-container {
+        background-color: #060CE9;
+        horiz-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
 
+    .question-container{
+        background-color: #060CE9;
+        vertical-align: center;
+        width: 300px;
+        height: 100px;
+        border: 3px solid #FFCC00;
+        perspective: 1000px;
+        margin-bottom: 7px;
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+
+    .card{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    .question-container:hover .card {
+        transform: rotateY(180deg);
+    }
+
+    .answer, .question{
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .question {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #060CE9;
+        color: #FFCC00;
+        text-align: center;
+        vertical-align: center;
+        font-size: medium;
+    }
+
+    .answer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #060CE9;
+        color: #FFCC00;
+        font-size: medium;
+        text-align: center;
+        vertical-align: center;
+    }
+
+</style>
 <body>
     <form class="form-inline global-search">
         <!-- <h1 style="font-size: 55px; font-family:Futura; color: #4285F4">
@@ -59,25 +123,32 @@
         {% endfor %}
         {% endif %}
     </form> -->
-    <div id="questions-container">
-        {% if data %}
-        <h1 class="yellow-text" style="text-align: center;">{{output_message}}</h1>
-        {% for d in data %}
-        <br>
-        <div class="question-container">
-            <div class="answer">
-                <p class="content-text">{{d[0][0]}}</p>
-            </div>
-            <div class="question">
-                <p class="content-text">{{d[0][1]}}</p>
-                <p class="content-text">{{d[1]}}</p>
-            </div>
 
-        </div>
-        <!-- <p class="yellow-text">{{d[0]}}</p> -->
+    <div>
+        {% if data %}
+        {% for d in data %}
+        <p class="yellow-text"> {{d}} </p>
         {% endfor %}
         {% endif %}
     </div>
+    <h1 class="yellow-text" style="text-align: center;">{{output_message}}</h1>
+    <div id="questions-container">
+        {% if data %}
+        {% for d in data %}
+        <div class="question-container">
+            <div class="card">
+                <div class="question">
+                    <p class="content-text">{{d[0][1]}}</p>
+                </div>
+                <div class="answer">
+                    <p class="content-text">{{d[0][0]}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
     <div id="footer">
         <p class="yellow-text" style="text-align: center;">Project Name: {{ name }}</p>
         <p class="yellow-text" style="text-align: center;">Student Name: ({{ netid }})</p>
