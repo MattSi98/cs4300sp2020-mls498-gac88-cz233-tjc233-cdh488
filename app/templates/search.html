@@ -7,7 +7,7 @@
 <style>
     #questions-container {
         background-color: #060CE9;
-        horiz-align: center;
+        text-align: center;
         display: flex;
         flex-wrap: wrap;
         margin-top: 50px;
@@ -16,7 +16,7 @@
         width: 50%;
     }
 
-    .question-container{
+    .question-container {
         background-color: #060CE9;
         vertical-align: center;
         width: 300px;
@@ -28,7 +28,7 @@
         margin-right: 3px;
     }
 
-    .card{
+    .card {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -39,19 +39,23 @@
 
     .question-container:hover .card {
         transform: rotateY(180deg);
+
     }
 
-    .answer, .question{
+    .question {
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
+        transform: rotateY(180deg);
     }
+
+
 
     .question {
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: #060CE9;
-        color: #FFCC00;
+        background-color: rgb(1, 51, 190);
+        color: rgb(255, 174, 0);
         text-align: center;
         vertical-align: center;
         font-size: medium;
@@ -61,14 +65,14 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: #060CE9;
-        color: #FFCC00;
+        background-color: rgb(1, 51, 190);
+        color: rgb(255, 174, 0);
         font-size: medium;
         text-align: center;
         vertical-align: center;
     }
-
 </style>
+
 <body>
     <form class="form-inline global-search">
         <!-- <h1 style="font-size: 55px; font-family:Futura; color: #4285F4">
@@ -87,6 +91,20 @@
             <p>Welcome to your very own personalized Jeopardy game! Have you ever wanted to test your knowledge on a
                 certain category of questions? This is your oppurtunity! Simply type in a keyword in the search bar
                 below and we'll make you a game based on similar questions.</p>
+            <hr>
+            <br>
+            <p style="color: white;">Input queries separated by commas and hit go. The app will determine which of the
+                queries has had real
+                Jeopardy questions asked about it (some very specific queries do not have any). It will them return a
+                randomized quiz for you to test yourself on. If too few questions were found, it will prompt you to
+                input a different set of queries. All of the questions will be mixed, so if you want questions about one
+                topic, only put in one query.</p>
+            <hr>
+            <br>
+            <p style="color: rgb(202, 202, 202);">Hints: Be general in picking your queries, it will result in better
+                quizzes -
+                specific queries will cause
+                questions to be overly specific, repetitive, and generally unanswerable. </p>
         </div>
         <br><br>
 
@@ -103,6 +121,9 @@
         {% if not data %}
         {% if trending %}
         <h1 class="yellow-text" style="text-align: center;">Trending Topics:</h1>
+        <h3 class="yellow-text" style="text-align: center;">These are current events, so many of them will not have had
+            questions made for them yet. Use them as ideas/guidelines and input more broad categories to have best
+            results!</h3>
         {% for d in trending %}
         <br>
         <div class="trending-item">
@@ -124,13 +145,13 @@
         {% endif %}
     </form> -->
 
-    <div>
+    <!-- <div>
         {% if data %}
         {% for d in data %}
         <p class="yellow-text"> {{d}} </p>
         {% endfor %}
         {% endif %}
-    </div>
+    </div> -->
     <h1 class="yellow-text" style="text-align: center;">{{output_message}}</h1>
     <div id="questions-container">
         {% if data %}

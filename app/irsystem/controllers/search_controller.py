@@ -29,15 +29,17 @@ net_id = "Matthew Simon: mls498, Grayson Campbell: gac88, Daniel Hayon: dh488, T
 
 @irsystem.route('/', methods=['GET'])
 def search():
-	query = request.args.get('search')
-	if not query:
-		data = []
-		output_message = ''
-	else:
-		output_message = "Here are questions about " + query + "!"
-		#data = range(5)
-		data = generateQuiz(query)
-	return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=data, trending=trending)
+    query = request.args.get('search')
+    if not query:
+        data = []
+        output_message = ''
+    else:
+        output_message = "Here are questions about " + query + "!"
+        data = generateQuiz(query)
+        if len(data) < 20:
+            data = ['    ', '    ']
+            output_message = 'Invalid query, please enter another.'
+    return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=data, trending=trending)
 
 
 
@@ -95,14 +97,14 @@ Takes twenty random entries from the given list of valid questions
 
 
 def getTwentyRandQuestions(validQuestions):
-	if (validQuestions == []):
-  	    return ["invlaid input - try again."]
-	else:
-		finalQuestions = []
-		for i in range(20):
-			randNum = random.randrange(0, len(validQuestions))
-			finalQuestions.append(validQuestions[randNum])
-		return finalQuestions
+    if (validQuestions == []):
+        return ["invlaid input - try again."]
+    else:
+        finalQuestions = []
+        for i in range(20):
+            randNum = random.randrange(0, len(validQuestions))
+            finalQuestions.append(validQuestions[randNum])
+        return finalQuestions
 
 
 
@@ -142,7 +144,7 @@ Takes a random question and then uses cosine similarity to select the 20 most si
 motivation from: https://www.geeksforgeeks.org/python-measure-similarity-between-two-sentences-using-cosine-similarity/
 '''
 def getMostSimilar(validQuestions):
-    if validQuestions == []:
+    if len(validQuestions) < 19:
         return ["invlaid input - try again."]
     else:
         randNum = random.randrange(0, len(validQuestions))
