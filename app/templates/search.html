@@ -20,7 +20,7 @@
         background-color: #060CE9;
         vertical-align: center;
         width: 300px;
-        height: 100px;
+        height: 200px;
         border: 3px solid #FFCC00;
         perspective: 1000px;
         margin-bottom: 7px;
@@ -135,23 +135,6 @@
         {% endif %}
     </div>
 
-    <!-- <form class="form-inline global-search">
-        {% if data %}
-        <h1>{{output_message}}</h1>
-        {% for d in data %}
-        <br>
-        <p>{{d}}</p>
-        {% endfor %}
-        {% endif %}
-    </form> -->
-
-    <!-- <div>
-        {% if data %}
-        {% for d in data %}
-        <p class="yellow-text"> {{d}} </p>
-        {% endfor %}
-        {% endif %}
-    </div> -->
     <h1 class="yellow-text" style="text-align: center;">{{output_message}}</h1>
     <div id="questions-container">
         {% if data %}
@@ -159,17 +142,22 @@
         <div class="question-container">
             <div class="card">
                 <div class="question">
+                    <br>
                     <p class="content-text">{{d[0][1]}}</p>
+
                 </div>
                 <div class="answer">
+                    <br>
                     <p class="content-text">{{d[0][0]}}</p>
+                    <p class="content-text" style="color: white !important;">{{d[1]}}</p>
                 </div>
             </div>
         </div>
         {% endfor %}
         {% endif %}
     </div>
-
+    <hr>
+    <br>
     <div id="footer">
         <p class="yellow-text" style="text-align: center;">Project Name: {{ name }}</p>
         <p class="yellow-text" style="text-align: center;">Student Name: ({{ netid }})</p>

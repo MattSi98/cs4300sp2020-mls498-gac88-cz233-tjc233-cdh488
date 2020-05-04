@@ -24,7 +24,7 @@ trending = []
 for x in df.values:
     trending.append(x[0])
 
-project_name = "Spotify Buddy Playlist Generation"
+project_name = "Custom Jeopardy Quiz Generation"
 net_id = "Matthew Simon: mls498, Grayson Campbell: gac88, Daniel Hayon: dh488, Theo Carrel: tjc233, Carol Zhang: cz233"
 
 @irsystem.route('/', methods=['GET'])
@@ -82,12 +82,12 @@ example:
 def getValidQuestions(query):
     validQuestions = []
     queryWords = splitQuery(query)
-    with open('./data/questionsList.json') as file:
+    with open('./data/finalData.json') as file:
         data = json.load(file)
         for word in queryWords:
             for x in data:
-                if (word.upper() in x[0]):
-                    validQuestions.append((x[1], x[2], x[0]))
+                if (word.upper() in x[2]):
+                    validQuestions.append((x[3],x[4],x[2]))
     return validQuestions
 
 
