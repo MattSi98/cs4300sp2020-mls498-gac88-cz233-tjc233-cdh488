@@ -86,9 +86,10 @@ def getValidQuestions(query):
         data = json.load(file)
         for word in queryWords:
             for x in data:
-                if (word.upper() in x[2]):
+                if (word.upper() in x[2] or word.upper() in x[3].upper() or word.upper() in x[4].upper()):
                     validQuestions.append((x[3],x[4],x[2]))
-    return validQuestions
+    validQuestionsNoDups = list(dict.fromkeys(validQuestions))
+    return validQuestionsNoDups
 
 
 '''
