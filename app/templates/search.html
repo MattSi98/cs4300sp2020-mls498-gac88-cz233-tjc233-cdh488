@@ -43,7 +43,7 @@
         }
 
         .question-container:hover .card {
-            /* -webkit-transform: rotateY(180deg); */
+            -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg);
 
         }
@@ -58,6 +58,7 @@
             text-align: center;
             vertical-align: center;
             font-size: medium;
+            -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }
 
@@ -70,7 +71,9 @@
             font-size: medium;
             text-align: center;
             vertical-align: center;
+            -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
+            -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg);
         }
     </style>
